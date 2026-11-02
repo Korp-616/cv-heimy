@@ -625,9 +625,9 @@ window.PERFIL = {
     },
     "linkedin": {
       "publicar": true,
-      "url": "https://www.linkedin.com/",
+      "url": "https://www.linkedin.com/in/amy-follano-76507a197/",
       "etiqueta": "LinkedIn",
-      "ayuda": "Sustituye esta dirección general por la URL del perfil cuando esté disponible."
+      "ayuda": "Perfil profesional de LinkedIn proporcionado para este sitio."
     }
   },
   "pie": {
