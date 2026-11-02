@@ -3,10 +3,18 @@
 window.PERFIL = {
   "_ayuda": "Edita este archivo y recarga index.html en el navegador. No requiere comandos ni instalaciones. Mantén las claves existentes y usa fechas AAAA-MM-DD. Incluye únicamente información pública.",
   "sitio": {
-    "titulo": "Heimy Diane Follano Granada | Administración y Gestión Pública",
-    "descripcion": "Perfil profesional de Heimy Diane Follano Granada. Administración, Gerencia Pública, contrataciones públicas, logística y abastecimiento.",
-    "urlPublica": "",
-    "idioma": "es-PE"
+    "titulo": "Heimy Diane Follano Granada | Gestión pública en Arequipa",
+    "descripcion": "Heimy Diane Follano Granada: licenciada en Administración y maestra en Gerencia Pública. Experiencia en contrataciones públicas, logística y abastecimiento en Arequipa, Perú.",
+    "urlPublica": "https://korp-616.github.io/cv-heimy/",
+    "idioma": "es-PE",
+    "compartir": {
+      "titulo": "Heimy Diane Follano Granada | Perfil profesional",
+      "descripcion": "Administración y Gerencia Pública. Trayectoria en contrataciones públicas, logística y abastecimiento. Arequipa, Perú.",
+      "imagen": "assets/heimy-follano-compartir.png",
+      "textoAlternativo": "Heimy Diane Follano Granada. Administración y Gerencia Pública. Logística, contrataciones y abastecimiento. Arequipa, Perú. Sello HF en marino y dorado.",
+      "ancho": 1200,
+      "alto": 630
+    }
   },
   "identidad": {
     "nombre": "Heimy Diane Follano Granada",
@@ -35,7 +43,7 @@ window.PERFIL = {
       "Gestión con criterio.",
       "Liderazgo con propósito."
     ],
-    "resumen": "Dirección de procesos de logística, abastecimiento y administración en el sector público.",
+    "resumen": "Licenciada en Administración y Maestra en Gerencia Pública en Arequipa, Perú. Experiencia en contrataciones públicas, logística y abastecimiento en el sector público.",
     "accion": "Conocer trayectoria",
     "selloSuperior": "Gestión pública",
     "selloInferior": "Criterio · Integridad · Liderazgo",

@@ -53,11 +53,47 @@ function validate(data) {
   if (mail.publicar && !/^[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(mail.direccion)) throw new Error('Añade un correo real antes de activar contacto.correo.publicar.');
   if (data.contacto.linkedin.publicar) publicUrl(data.contacto.linkedin.url);
   if (data.sitio.urlPublica) publicUrl(data.sitio.urlPublica);
+  const share = data.sitio.compartir;
+  if (share) {
+    localAsset(share.imagen);
+    if (!/\.(png|jpe?g|webp)$/i.test(share.imagen)) throw new Error('La imagen para compartir debe ser PNG, JPEG o WebP.');
+    if (!share.textoAlternativo || !Number.isInteger(share.ancho) || !Number.isInteger(share.alto) || share.ancho <= 0 || share.alto <= 0) throw new Error('La imagen para compartir necesita texto alternativo y dimensiones válidas.');
+  }
   if (data.identidad.foto.publicar) {
     localAsset(data.identidad.foto.archivo);
     if (!(data.identidad.foto.ancho > 0 && data.identidad.foto.alto > 0)) throw new Error('La foto necesita ancho y alto.');
   }
   if (data.identidad.cv.publicar) localAsset(data.identidad.cv.archivo);
+}
+
+function prepareMetadata(d) {
+  const url = d.sitio.urlPublica ? publicUrl(d.sitio.urlPublica) : '';
+  const share = d.sitio.compartir;
+  const person = {
+    '@type':'Person', name:d.identidad.nombre, alternateName:d.identidad.nombreCorto,
+    description:d.sitio.descripcion, jobTitle:d.identidad.titulo,
+    homeLocation:{'@type':'Place',name:d.identidad.ubicacion},
+    knowsAbout:[...new Set([...d.competencias.map(x=>x.nombre),...d.herramientas])],
+    alumniOf:d.formacion.filter(x=>x.estado === 'Grado obtenido').map(x=>({'@type':'CollegeOrUniversity',name:x.institucion}))
+  };
+  const linkedin = d.contacto.linkedin;
+  if (linkedin.publicar) {
+    const profile = new URL(publicUrl(linkedin.url));
+    if (/(^|\.)linkedin\.com$/i.test(profile.hostname) && /^\/in\/[^/]+/.test(profile.pathname)) person.sameAs = [profile.href];
+  }
+  // La tarjeta de marca no es una fotografía de la persona.
+  if (url) {
+    person['@id'] = `${url}#persona`;
+    person.url = url;
+    person.mainEntityOfPage = {'@id':`${url}#perfil-profesional`};
+  }
+  const schema = url ? {
+    '@context':'https://schema.org', '@graph':[
+      {'@type':'ProfilePage','@id':`${url}#perfil-profesional`,url,name:d.sitio.titulo,description:d.sitio.descripcion,inLanguage:d.sitio.idioma,mainEntity:{'@id':person['@id']}},
+      person
+    ]
+  } : {'@context':'https://schema.org',...person};
+  return { url, share, image:url && share ? new URL(localAsset(share.imagen),url).href : '', schema };
 }
 
 function prepareProfile(d) {
@@ -80,12 +116,9 @@ function prepareProfile(d) {
     d.contacto.linkedin.publicar ? `<a class="contact-link" href="${e(publicUrl(d.contacto.linkedin.url))}" target="_blank" rel="noopener noreferrer">${icon('linkedin')}<span>${e(d.contacto.linkedin.etiqueta)}</span><span class="sr-only"> (abre en otra pestaña)</span>${icon('arrow')}</a>` : '',
     cvLink('contact-link'),
   ].join('');
-  const schema = {'@context':'https://schema.org','@type':'Person',name:d.identidad.nombre,description:d.sitio.descripcion,knowsAbout:d.competencias.map(x=>x.nombre),alumniOf:d.formacion.filter(x=>x.estado === 'Grado obtenido').map(x=>({'@type':'CollegeOrUniversity',name:x.institucion}))};
-  if (d.sitio.urlPublica) schema.url = publicUrl(d.sitio.urlPublica);
-  if (d.contacto.linkedin.publicar && new URL(d.contacto.linkedin.url).pathname.startsWith('/in/')) schema.sameAs = [publicUrl(d.contacto.linkedin.url)];
+  const { schema } = prepareMetadata(d);
   const slots = {
     title:e(d.sitio.titulo), description:e(d.sitio.descripcion), name:e(d.identidad.nombre), shortName:e(d.identidad.nombreCorto), initials:e(d.identidad.iniciales),
-    canonical:d.sitio.urlPublica ? `<link rel="canonical" href="${e(publicUrl(d.sitio.urlPublica))}"><meta property="og:url" content="${e(publicUrl(d.sitio.urlPublica))}">` : '',
     schema:JSON.stringify(schema).replace(/</g,'\\u003c'), navigation:nav(false), footerNavigation:nav(true), heroLabel:e(d.portada.etiqueta), heroHeadline:headline(d.portada.titular), heroDescription:e(d.portada.resumen), heroAction:e(d.portada.accion), heroDownload:cvLink('button button-text'), portrait, sealCaption:e(d.portada.pieSello), specialty:e(d.identidad.especialidad),
     credentialLabel:e(d.acreditacion.etiqueta), credentialName:e(d.acreditacion.nombre), credentialLevel:e(d.acreditacion.nivel), credentialDescription:e(d.acreditacion.descripcion), credentialDates:period(d.acreditacion), systems:d.herramientas.map(e).join(' · '),
     profileLabel:e(d.perfil.etiqueta), profileTitle:headline(d.perfil.titulo), profileLead:e(d.perfil.entradilla), profileParagraphs:d.perfil.parrafos.map(p=>`<p>${e(p)}</p>`).join(''), values:d.perfil.valores.map(p=>`<span>${e(p)}</span>`).join(''), profileHighlights:d.perfil.destacados.map(p=>`<li>${e(p)}</li>`).join(''), experience, education, categories:categories.map(p=>`<option value="${e(p)}">${e(p)}</option>`).join(''), certificates,
@@ -107,17 +140,47 @@ function renderProfile(data) {
     // Todos los textos variables se han escapado y sus rutas se han validado.
     element.innerHTML = slots[key];
   }
-  document.documentElement.lang = data.sitio.idioma || 'es-PE';
-  document.title = data.sitio.titulo;
-  for (const selector of ['meta[name="description"]','meta[property="og:description"]']) document.querySelector(selector)?.setAttribute('content', data.sitio.descripcion);
-  document.querySelector('meta[property="og:title"]')?.setAttribute('content', data.sitio.titulo);
-  document.querySelector('meta[property="og:site_name"]')?.setAttribute('content', data.identidad.nombre);
+  renderMetadata(data);
   document.querySelector('script[type="application/ld+json"]').textContent = slots.schema;
   document.querySelector('[data-slot="headerBrand"]').setAttribute('aria-label', `${data.identidad.nombre}, inicio`);
-  for (const element of document.querySelectorAll('link[rel="canonical"],meta[property="og:url"]')) element.remove();
-  if (data.sitio.urlPublica) {
-    const canonical = document.createElement('link');canonical.rel='canonical';canonical.href=publicUrl(data.sitio.urlPublica);document.head.append(canonical);
-    const openGraph = document.createElement('meta');openGraph.setAttribute('property','og:url');openGraph.content=publicUrl(data.sitio.urlPublica);document.head.append(openGraph);
+}
+function renderMetadata(data) {
+  const { url, share, image } = prepareMetadata(data);
+  const meta = (attribute, name, value) => {
+    let element = document.head.querySelector(`meta[${attribute}="${name}"]`);
+    if (!value) { element?.remove(); return; }
+    if (!element) {
+      element = document.createElement('meta');
+      element.setAttribute(attribute,name);
+      document.head.append(element);
+    }
+    element.setAttribute('content',String(value));
+  };
+  document.documentElement.lang = data.sitio.idioma || 'es-PE';
+  document.title = data.sitio.titulo;
+  meta('name','description',data.sitio.descripcion);
+  meta('name','author',data.identidad.nombre);
+  meta('property','og:title',share?.titulo || data.sitio.titulo);
+  meta('property','og:description',share?.descripcion || data.sitio.descripcion);
+  meta('property','og:site_name',data.identidad.nombre);
+  meta('property','og:locale',document.documentElement.lang.replace('-','_'));
+  meta('property','og:url',url);
+  meta('name','twitter:card',image ? 'summary_large_image' : 'summary');
+  meta('name','twitter:title',share?.titulo || data.sitio.titulo);
+  meta('name','twitter:description',share?.descripcion || data.sitio.descripcion);
+  meta('name','twitter:image',image);
+  meta('name','twitter:image:alt',image ? share.textoAlternativo : '');
+  meta('property','og:image',image);
+  meta('property','og:image:secure_url',image);
+  meta('property','og:image:alt',image ? share.textoAlternativo : '');
+  meta('property','og:image:width',image ? share.ancho : '');
+  meta('property','og:image:height',image ? share.alto : '');
+  meta('property','og:image:type',image ? (/\.png$/i.test(share.imagen) ? 'image/png' : /\.webp$/i.test(share.imagen) ? 'image/webp' : 'image/jpeg') : '');
+  let canonical = document.head.querySelector('link[rel="canonical"]');
+  if (!url) canonical?.remove();
+  else {
+    if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.append(canonical); }
+    canonical.href = url;
   }
 }
 window.HeimySite = Object.assign(window.HeimySite || {}, { prepareProfile, renderProfile });
