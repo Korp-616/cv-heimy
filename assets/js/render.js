@@ -81,7 +81,7 @@ function prepareMetadata(d) {
     const profile = new URL(publicUrl(linkedin.url));
     if (/(^|\.)linkedin\.com$/i.test(profile.hostname) && /^\/in\/[^/]+/.test(profile.pathname)) person.sameAs = [profile.href];
   }
-  // La tarjeta de marca no es una fotografía de la persona.
+  if (url && d.identidad.foto.publicar) person.image = new URL(localAsset(d.identidad.foto.archivo),url).href;
   if (url) {
     person['@id'] = `${url}#persona`;
     person.url = url;
@@ -165,7 +165,7 @@ function renderMetadata(data) {
   meta('property','og:site_name',data.identidad.nombre);
   meta('property','og:locale',document.documentElement.lang.replace('-','_'));
   meta('property','og:url',url);
-  meta('name','twitter:card',image ? 'summary_large_image' : 'summary');
+  meta('name','twitter:card',image && share.ancho / share.alto >= 1.8 ? 'summary_large_image' : 'summary');
   meta('name','twitter:title',share?.titulo || data.sitio.titulo);
   meta('name','twitter:description',share?.descripcion || data.sitio.descripcion);
   meta('name','twitter:image',image);

@@ -17,7 +17,7 @@
 .seal-caption { margin-top: 53px; padding-top: 17px; border-top: 1px solid var(--dark-line); display: flex; justify-content: space-between; gap: 15px; font-size: 1rem; color: #bdc7d0;  line-height: 1.7; flex-wrap: wrap; }
 .seal-caption > span:first-child { color: var(--gold-light); text-transform: none; font-size: 1rem; letter-spacing: normal;  }
 .photo-frame { overflow: hidden; border: 1px solid #7d836e; padding: 8px; }
-.photo-frame img { width: 100%; height: auto; object-fit: cover; }
+.photo-frame img { display: block; width: 100%; height: auto; object-fit: cover; }
 .credential-band { display: grid; grid-template-columns: 1.4fr .85fr 1.1fr; gap: 28px; align-items: center; border-top: 1px solid var(--dark-line); padding-block: 29px 34px; }
 .credential-main { display: flex; align-items: center; gap: 18px; }
 .credential-star { width: 44px; height: 44px; flex: 0 0 44px; fill: none; stroke: var(--gold-light); stroke-width: 1; }

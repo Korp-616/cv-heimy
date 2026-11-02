@@ -10,10 +10,10 @@ window.PERFIL = {
     "compartir": {
       "titulo": "Heimy Diane Follano Granada | Perfil profesional",
       "descripcion": "Conoce mi experiencia en administración pública, logística y contrataciones, mi formación y mi trayectoria profesional en entidades del Estado.",
-      "imagen": "assets/heimy-follano-compartir.png",
-      "textoAlternativo": "Heimy Diane Follano Granada. Administración y Gerencia Pública. Logística, contrataciones y abastecimiento. Arequipa, Perú. Sello HF en marino y dorado.",
-      "ancho": 1200,
-      "alto": 630
+      "imagen": "assets/foto_perfil.png",
+      "textoAlternativo": "Fotografía de perfil de Heimy Diane Follano Granada",
+      "ancho": 1254,
+      "alto": 1254
     }
   },
   "identidad": {
@@ -25,11 +25,11 @@ window.PERFIL = {
     "especialidad": "Logística y abastecimiento",
     "ubicacion": "Arequipa, Perú",
     "foto": {
-      "publicar": false,
-      "archivo": "",
-      "textoAlternativo": "Heimy Diane Follano Granada",
-      "ancho": 329,
-      "alto": 422
+      "publicar": true,
+      "archivo": "assets/foto_perfil.png",
+      "textoAlternativo": "Fotografía de perfil de Heimy Diane Follano Granada",
+      "ancho": 1254,
+      "alto": 1254
     },
     "cv": {
       "publicar": true,
