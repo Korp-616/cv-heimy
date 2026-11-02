@@ -1,0 +1,16 @@
+:root {
+  --navy: #14263d;
+  --navy-light: #20354d;
+  --ivory: #f8f7f3;
+  --white: #ffffff;
+  --gold: #b89b64;
+  --gold-light: #d2b981;
+  --gold-text: #76603b;
+  --slate: #64748b;
+  --body-text: #34465b;
+  --line: #d9dcd5;
+  --dark-line: #435162;
+  --serif: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --sans: 'Aptos', 'Segoe UI', Arial, sans-serif;
+  --container: 1220px;
+}

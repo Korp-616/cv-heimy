@@ -1,0 +1,13 @@
+.site-footer { background: #102035; color: #c1cbd5; padding-block: 44px 25px; }
+.footer-top { display: flex; justify-content: space-between; gap: 30px; align-items: center; }
+.site-footer .brand-name { font-size: 1.125rem; color: #f0eee7;  }
+.site-footer .brand-name > span { text-transform: none; font-size: 1rem; letter-spacing: .01em; line-height: 1.8;  max-width: 50ch; }
+.back-top { display: inline-flex; align-items: center; gap: 19px; font-size: 1rem; min-height: 48px;  }
+.back-top .icon { color: var(--gold-light); }
+.footer-navigation { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-block: 35px 27px; }
+.footer-navigation a { font-size: 1.0625rem; padding-block: 12px;  min-height: 48px; }
+.footer-navigation a:hover { color: var(--gold-light); }
+.footer-bottom { border-top: 1px solid #3b4a5b; padding-top: 22px; display: flex; justify-content: space-between; gap: 20px; font-size: 1rem;  line-height: 1.8; }
+.footer-bottom > span { font-size: 1rem; letter-spacing: normal;  }
+.site-footer a:focus-visible { outline-color: var(--gold-light); }
+@media (max-width: 700px) { .footer-top { flex-direction: column; align-items: flex-start; gap: 20px; }.site-footer .brand-name { font-size: 1.125rem;  }.site-footer .brand-name > span { font-size: 1rem; max-width: 50ch;  line-height: 1.8; }.footer-navigation { gap: 4px 25px; margin-top: 25px; }.footer-bottom { flex-direction: column; gap: 10px;  font-size: 1rem; line-height: 1.8; } }

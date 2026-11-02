@@ -1,0 +1,11 @@
+.icon { display: inline-block; width: 20px; height: 20px; flex: 0 0 20px; fill: none; stroke: currentColor; stroke-width: 1.5; vertical-align: middle; }
+.button { min-height: 56px; display: inline-flex; justify-content: center; align-items: center; gap: 25px; padding: 15px 23px; border: 1px solid transparent; font-size: 1.125rem; font-weight: 600; transition: background .2s, color .2s, border-color .2s;  line-height: 1.5; }
+.button-gold { background: #c9ae79; color: var(--navy); }
+.button-gold:hover { background: #dfcba2; }
+.button-text { color: #e4e6e6; background: transparent; padding-inline: 10px; font-weight: 400; gap: 12px; }
+.button-text:hover { color: var(--gold-light); }
+.button-outline { color: var(--navy); border-color: #a6b0b2; background: transparent; }
+.button-outline:hover { background: var(--navy); border-color: var(--navy); color: white; }
+.badge { display: inline-flex; border: 1px solid #c6b898; color: #715a33; padding: 6px 10px; font-size: 1rem; line-height: 1.6; letter-spacing: .01em; width: fit-content;  }
+.badge-study { color: #4f6477; border-color: #b7c2c8; }
+@media (max-width: 360px) { .button { gap: 16px; padding-inline: 18px;  font-size: 1.125rem; min-height: 56px; line-height: 1.5; } }
