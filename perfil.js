@@ -4,12 +4,12 @@ window.PERFIL = {
   "_ayuda": "Edita este archivo y recarga index.html en el navegador. No requiere comandos ni instalaciones. Mantén las claves existentes y usa fechas AAAA-MM-DD. Incluye únicamente información pública.",
   "sitio": {
     "titulo": "Heimy Diane Follano Granada | Gestión pública en Arequipa",
-    "descripcion": "Heimy Diane Follano Granada: licenciada en Administración y maestra en Gerencia Pública. Experiencia en contrataciones públicas, logística y abastecimiento en Arequipa, Perú.",
+    "descripcion": "Heimy Diane Follano Granada. Licenciada en Administración y maestra en Gerencia Pública, con experiencia en logística y contrataciones públicas. Arequipa, Perú.",
     "urlPublica": "https://korp-616.github.io/cv-heimy/",
     "idioma": "es-PE",
     "compartir": {
       "titulo": "Heimy Diane Follano Granada | Perfil profesional",
-      "descripcion": "Administración y Gerencia Pública. Trayectoria en contrataciones públicas, logística y abastecimiento. Arequipa, Perú.",
+      "descripcion": "Conoce mi experiencia en administración pública, logística y contrataciones, mi formación y mi trayectoria profesional en entidades del Estado.",
       "imagen": "assets/heimy-follano-compartir.png",
       "textoAlternativo": "Heimy Diane Follano Granada. Administración y Gerencia Pública. Logística, contrataciones y abastecimiento. Arequipa, Perú. Sello HF en marino y dorado.",
       "ancho": 1200,
@@ -38,32 +38,32 @@ window.PERFIL = {
     }
   },
   "portada": {
-    "etiqueta": "Administración & Gerencia Pública",
+    "etiqueta": "Administración y Gerencia Pública",
     "titular": [
-      "Gestión con criterio.",
-      "Liderazgo con propósito."
+      "Gestión pública.",
+      "Logística y abastecimiento."
     ],
-    "resumen": "Licenciada en Administración y Maestra en Gerencia Pública en Arequipa, Perú. Experiencia en contrataciones públicas, logística y abastecimiento en el sector público.",
-    "accion": "Conocer trayectoria",
+    "resumen": "Licenciada en Administración y maestra en Gerencia Pública. Experiencia en jefaturas administrativas y de logística en el sector público. Arequipa, Perú.",
+    "accion": "Ver experiencia profesional",
     "selloSuperior": "Gestión pública",
-    "selloInferior": "Criterio · Integridad · Liderazgo",
-    "pieSello": "Perfil ejecutivo"
+    "selloInferior": "Administración · Logística · Abastecimiento",
+    "pieSello": "Perfil profesional"
   },
   "perfil": {
     "etiqueta": "01 / Perfil profesional",
     "titulo": [
-      "La experiencia al servicio de",
-      "la gestión pública."
+      "Administración y",
+      "contrataciones públicas."
     ],
-    "entradilla": "Licenciada en Administración y Maestra en Gerencia Pública, con trayectoria en cargos de jefatura en entidades públicas.",
+    "entradilla": "Soy licenciada en Administración y maestra en Gerencia Pública. He ocupado cargos de jefatura en administración, logística y abastecimiento en entidades públicas.",
     "parrafos": [
-      "Especialista en gestión logística, contrataciones públicas y adquisiciones de bienes y servicios. Experiencia en procedimientos de selección, gestión contractual, almacenes y control patrimonial.",
-      "Liderazgo de equipos y gestión de procesos orientados al abastecimiento oportuno, la eficiencia operativa y la optimización de recursos. Planificación, supervisión y seguimiento de adquisiciones, contratos, proveedores e inventarios."
+      "Mi experiencia comprende los procedimientos de selección, la adquisición de bienes y servicios y el seguimiento de contratos. He trabajado en municipalidades y otras entidades del Estado, en áreas de administración y logística.",
+      "He coordinado equipos y procesos de compra, así como el seguimiento de proveedores, almacenes e inventarios. También cuento con experiencia en control patrimonial y en el uso de SEACE, Perú Compras, SIGA y SIAF."
     ],
     "valores": [
-      "Integridad en el servicio",
-      "Criterio técnico",
-      "Liderazgo de equipos"
+      "Coordinación de equipos",
+      "Gestión de compras",
+      "Control patrimonial"
     ],
     "destacados": [
       "Contrataciones públicas",
@@ -77,7 +77,7 @@ window.PERFIL = {
     "inicio": "2025-05-05",
     "fin": "2027-05-04",
     "etiqueta": "Certificación profesional",
-    "descripcion": "Certificación profesional a nivel intermedio, con formación especializada y actualización en contratación pública y gestión de abastecimiento."
+    "descripcion": "Certificación profesional de nivel intermedio en contratación pública."
   },
   "experiencia": [
     {
@@ -349,8 +349,8 @@ window.PERFIL = {
       "dependencia": "",
       "inicio": "2025",
       "fin": "",
-      "estado": "Estudios reportados en 2025",
-      "detalle": "Estudiante del primer ciclo, según la documentación de 2025. No se acredita grado de doctor."
+      "estado": "Estudios de doctorado",
+      "detalle": "Primer ciclo, 2025."
     }
   ],
   "certificaciones": [
@@ -550,7 +550,7 @@ window.PERFIL = {
   "competencias": [
     {
       "nombre": "Gestión pública",
-      "descripcion": "Planificación, supervisión y coordinación de procesos institucionales.",
+      "descripcion": "Planificación y seguimiento de procesos administrativos en entidades públicas.",
       "elementos": [
         "Gerencia pública",
         "Presupuesto público",
@@ -559,7 +559,7 @@ window.PERFIL = {
     },
     {
       "nombre": "Contrataciones del Estado",
-      "descripcion": "Gestión de adquisiciones de bienes y servicios en el sector público.",
+      "descripcion": "Adquisición de bienes y servicios, desde los procedimientos de selección hasta el seguimiento de contratos.",
       "elementos": [
         "Procedimientos de selección",
         "Gestión contractual",
@@ -568,7 +568,7 @@ window.PERFIL = {
     },
     {
       "nombre": "Logística y abastecimiento",
-      "descripcion": "Procesos orientados al abastecimiento oportuno y a la eficiencia operativa.",
+      "descripcion": "Gestión de compras, almacenes e inventarios para el abastecimiento de las entidades.",
       "elementos": [
         "Adquisiciones",
         "Administración de almacenes",
@@ -577,7 +577,7 @@ window.PERFIL = {
     },
     {
       "nombre": "Gestión administrativa",
-      "descripcion": "Administración, coordinación de equipos y seguimiento operativo.",
+      "descripcion": "Coordinación de equipos, administración de personal y gestión de órdenes de compra y servicio.",
       "elementos": [
         "Jefaturas administrativas",
         "Administración de personal",
@@ -586,7 +586,7 @@ window.PERFIL = {
     },
     {
       "nombre": "Control patrimonial",
-      "descripcion": "Gestión y seguimiento de bienes institucionales.",
+      "descripcion": "Catalogación, inventario y registro de bienes en el SINABIP.",
       "elementos": [
         "Catalogación",
         "Inventarios",
@@ -595,7 +595,7 @@ window.PERFIL = {
     },
     {
       "nombre": "Sistemas administrativos",
-      "descripcion": "Herramientas aplicadas a la gestión logística y administrativa.",
+      "descripcion": "Uso de SEACE, Perú Compras, SIGA y SIAF en procesos de contratación y gestión administrativa.",
       "elementos": [
         "SEACE",
         "Perú Compras",
@@ -613,10 +613,10 @@ window.PERFIL = {
   "contacto": {
     "etiqueta": "07 / Contacto profesional",
     "titulo": [
-      "Conversemos sobre",
-      "el próximo desafío."
+      "Conversemos",
+      "por LinkedIn."
     ],
-    "descripcion": "Gestión pública, contrataciones y abastecimiento. Experiencia y criterio para asumir responsabilidades institucionales.",
+    "descripcion": "Para consultas profesionales sobre administración, contrataciones públicas o abastecimiento, puedes contactarme a través de LinkedIn.",
     "correo": {
       "publicar": false,
       "direccion": "",
@@ -626,7 +626,7 @@ window.PERFIL = {
     "linkedin": {
       "publicar": true,
       "url": "https://www.linkedin.com/in/amy-follano-76507a197/",
-      "etiqueta": "LinkedIn",
+      "etiqueta": "Ver perfil en LinkedIn",
       "ayuda": "Perfil profesional de LinkedIn proporcionado para este sitio."
     }
   },

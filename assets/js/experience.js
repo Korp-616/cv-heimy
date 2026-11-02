@@ -10,7 +10,7 @@ function initializeExperience(){
   const update=open=>{
     older.hidden=!open;
     button.setAttribute('aria-expanded',String(open));
-    button.textContent=open?'Mostrar solo experiencias destacadas':`Ver trayectoria completa (${total} cargos)`;
+    button.textContent=open?'Mostrar menos':`Ver trayectoria completa (${total} experiencias)`;
     status.textContent=`${open?total:featured} de ${total} experiencias`;
   };
   // Un enlace directo a un cargo histórico debe poder mostrarlo.
